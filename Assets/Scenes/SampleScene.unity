@@ -46427,17 +46427,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7478517604267392696, guid: 4dd2b9b7a333348b29c7ea3430643e19, type: 3}
-      propertyPath: playerSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8359531116309068755, guid: 4dd2b9b7a333348b29c7ea3430643e19, type: 3}
       propertyPath: m_Name
       value: Sigma Bartu(Player)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8699981084061434687, guid: 4dd2b9b7a333348b29c7ea3430643e19, type: 3}
-      propertyPath: m_Mass
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

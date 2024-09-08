@@ -9,11 +9,16 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D myRigidBody;
     [SerializeField] float playerSpeed = 10f;
 
+    int direction;
+
+    Animator animator;
+
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-
+        animator = GetComponent<Animator>();
     }
+
     void Update()
     {
         Run();
@@ -23,23 +28,31 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
+
         Debug.Log(moveInput);
         
-        /*if (moveInput.x == -1 && moveInput.y == 0)
-        {
-            
-        }
-
-        else if (moveInput.x == 1 && moveInput.y == 0)
-        {
-            
-        }
-        */
+        
     }
 
+    void FlipSprite()
+    {
+        if (moveInput.x != 0)
+        {
+            Vector3 currentScale = transform.localScale;
+            currentScale.x = Mathf.Abs(currentScale.x) * Mathf.Sign(moveInput.x);
+            transform.localScale = currentScale;
+        }
+    }
+    
     void Run()
     {
-        Vector2 playerVelocity = new Vector2 (moveInput.x * playerSpeed, myRigidBody.velocity.y);
+        Vector2 playerVelocity = new Vector2(moveInput.x * playerSpeed, myRigidBody.velocity.y);
         myRigidBody.velocity = playerVelocity;
+
+        bool isRunning = moveInput.x != 0;
+        animator.SetBool("isRunning", isRunning);
+
+        FlipSprite();
     }
+
 }
